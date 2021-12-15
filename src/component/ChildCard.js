@@ -6,6 +6,44 @@ import { accessInfo } from "../Utils/AccessInfo";
 const ChildCard = (props) => {
   const [isCheckedIn, setIsCheckedIn] = useState(props.checkedIn);
 
+  const currentDay = new Date();
+  let hrs = currentDay.getHours();
+  let mins = currentDay.getMinutes();
+
+  if (hrs < 10) {
+    hrs = "0" + hrs;
+  }
+  if (mins < 10) {
+    mins = "0" + mins;
+  }
+  const currentTime = hrs + ":" + mins;
+
+  const checkInHandler = async (e) => {
+    await axios
+      .post(`https://app.famly.co/api/v2/children/${props.childId}/checkins`, {
+        accessToken: accessInfo.accessToken,
+        pickupTime: currentTime,
+      })
+      .then((res) => {
+        setIsCheckedIn(res.checkedIn);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const checkOutHandler = async (e) => {
+    await axios
+      .post(`https://app.famly.co/api/v2/children/${props.childId}/checkout`, {
+        accessToken: accessInfo.accessToken,
+      })
+      .then((res) => {
+        setIsCheckedIn(res.checkedIn);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <Card
       style={
@@ -17,10 +55,18 @@ const ChildCard = (props) => {
       <img src={props.image} alt={`Picture of ${props.fullName}`} />
       <h2>{props.fullName}</h2>
       <div>
-        <button disabled={isCheckedIn} style={{ backgroundColor: "#8bf58a" }}>
+        <button
+          className="check-in"
+          disabled={isCheckedIn}
+          onClick={checkInHandler}
+        >
           Check-in
         </button>
-        <button disabled={!isCheckedIn} style={{ backgroundColor: "#fca2a2" }}>
+        <button
+          className="check-out"
+          disabled={!isCheckedIn}
+          onClick={checkOutHandler}
+        >
           Checkout
         </button>
       </div>
@@ -52,6 +98,12 @@ const Card = styled.div`
     padding: 0.75rem;
     border-radius: 0.5rem;
     font-size: 1rem;
+  }
+  .check-in {
+    background-color: #8bf58a;
+  }
+  .check-out {
+    background-color: #fca2a2;
   }
 `;
 
