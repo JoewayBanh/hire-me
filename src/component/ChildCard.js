@@ -80,7 +80,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20%;
+  width: 30%;
   border: 2px solid #f9e4e4;
   border-radius: 0.5rem;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
