@@ -1,6 +1,8 @@
-I made this small application thinking that it'll mainly be used as a clock-in/out similar to old-school workplaces. So I chose to make each child as a card with a check-in and check-out button.
-Prior to now I have worked on a hobby project which have some similarities but is much simpler than this one, which made it way more fun as it felt like an extension of my own project. The reason for axios instead of fetch is because I used axios for my own project and I find it more intuitive.
-The design and colours I chose were based on typical children theme i.e. baby blue, rounded corners etc.
+# Thought process and description of project:
+
+- I made this small application thinking that it'll mainly be used as a clock-in/out similar to old-school workplaces. So I chose to make each child as a card with a check-in and check-out button.
+- Prior to now I have worked on a hobby project which have some similarities but is much simpler than this one, which made it way more fun as it felt like an extension of my own project. The reason for axios instead of fetch is because I used axios for my own project and I find it more intuitive.
+- The design and colours I chose were based on typical children theme i.e. baby blue, rounded corners etc.
 
 # Interested in working for Famly?
 
